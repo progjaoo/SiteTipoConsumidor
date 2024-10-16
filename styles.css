@@ -4,12 +4,18 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+    background-image: url('images/Zinc.jpg'); 
+    background-size: cover;
+    background-position: center;
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente (caso necessário) */
+
 }
 
 h1 {
@@ -42,34 +48,55 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-weight: bold;
 }
 
 .option:hover {
-    background-color: #f0f0f0; /* cor de fundo ao passar o mouse */
+    background-color: #f0f0f0; 
 }
 
 .option.selected {
-    background-color: red; /* cor de fundo para a opção marcada */
-    color: white; /* texto em branco */
-    border: 1px solid darkred; /* borda escura para destaque */
+    background-color: red; 
+    color: white; 
+    border: 1px solid darkred;
 }
 
 .next {
     background-color: #2196F3;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Aumenta o espaço interno */
     cursor: pointer;
     border-radius: 5px;
+    font-size: 24px; /* Aumenta o tamanho da fonte */
     display: none;
-    font-size: 20px;
+    width: 180px;    /* Define uma largura fixa */
+    height: 60px;    /* Define uma altura fixa */
+    text-align: center; /* Certifica que o texto fica centralizado */
+    margin-top: 20px; /* Adiciona um espaçamento acima do botão, caso necessário */
 }
 
 .next:hover {
     background-color: #1976D2;
 }
-
 .result {
+    display: flex;          /* Usar flexbox para centralizar o conteúdo */
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center;    /* Centralizar verticalmente */
+    flex-direction: column; /* Coloca o texto e a imagem em uma coluna */
+}
+
+.restart {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
     margin-top: 20px;
-    font-size: 18px;
+}
+
+.restart:hover {
+    background-color: #1976D2;
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Teste: Que tipo de consumidor eu sou?</h1>
+        <h1 id="userName">Teste: Que tipo de consumidor eu sou?</h1>
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
         </div>
@@ -21,6 +21,15 @@
         <button class="next" id="nextButton" onclick="nextQuestion()">Próxima</button>
         <div class="result" id="result"></div>
     </div>
+
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const userName = localStorage.getItem("userName");
+            if (userName) {
+                document.getElementById("userName").textContent = `Olá, ${userName}! Que tipo de consumidor você é?`;
+            }
+        });
+    </script>
 </body>
 </html>

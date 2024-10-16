@@ -93,8 +93,8 @@ function loadQuestion() {
 
     options.forEach((option, index) => {
         option.textContent = currentQuestion.options[index];
-        option.classList.remove("selected"); // Remove a seleção anterior
-        option.onclick = () => selectOption(index); // Define a função de clique
+        option.classList.remove("selected"); 
+        option.onclick = () => selectOption(index); 
     });
 
     document.getElementById("nextButton").style.display = 'none';
@@ -103,13 +103,10 @@ function loadQuestion() {
 
 function selectOption(index) {
     const options = document.querySelectorAll(".option");
-    // Remover a classe 'selected' de todas as opções
     options.forEach(option => option.classList.remove('selected'));
 
-    // Adicionar a classe 'selected' à opção clicada
     options[index].classList.add('selected');
 
-    // Atualizar a pontuação com base na opção escolhida
     score += (index === 0) ? 3 : (index === 1) ? 1 : 2;
 
     document.getElementById("nextButton").style.display = 'block';
@@ -136,13 +133,36 @@ function showResult() {
         resultText = "Pão Duro! Você é extremamente cauteloso e evita gastar.";
     }
 
-    document.querySelector(".container").innerHTML = `<h2>${resultText}</h2>`;
+    document.querySelector(".container").innerHTML = `
+        <h2>${resultText}</h2>
+        <button class="restart" onclick="restartQuiz()">Reiniciar</button>
+    `;
 }
 
 function updateProgress() {
     const progress = document.getElementById("progress");
     const percentage = ((currentQuestionIndex + 1) / questions.length) * 100;
     progress.style.width = `${percentage}%`;
+}
+
+function restartQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.querySelector(".container").innerHTML = `
+        <h1 id="userName">Teste: Que tipo de consumidor eu sou?</h1>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="question" id="question"></div>
+        <div class="options">
+            <button class="option">A</button>
+            <button class="option">B</button>
+            <button class="option">C</button>
+        </div>
+        <button class="next" id="nextButton" onclick="nextQuestion()">Próxima</button>
+        <div class="result" id="result"></div>
+    `;
+    loadQuestion();
 }
 
 loadQuestion();
